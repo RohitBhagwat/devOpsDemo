@@ -1,7 +1,8 @@
 // Generated on 2016-03-29 using generator-angular 0.15.1
 'use strict';
 
-var gulp = require('gulp');
+var gulp = require('gulp'),
+	jshint = require('gulp-jshint');
 var $ = require('gulp-load-plugins')();
 var openURL = require('open');
 var lazypipe = require('lazypipe');
@@ -54,6 +55,12 @@ var styles = lazypipe()
 gulp.task('styles', function () {
   return gulp.src(paths.styles)
     .pipe(styles());
+});
+
+gulp.task('jshint', function() {
+  return gulp.src(paths.scripts)
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('lint:scripts', function () {
